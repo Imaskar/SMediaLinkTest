@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SMediaLinkTest</string>
+    <string name="title_textnbtn_detail">Detail View</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="row">Row</string>
+    <string name="fill">%(0..1)</string>
+
+</resources>
