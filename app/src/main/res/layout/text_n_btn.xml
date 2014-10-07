@@ -4,7 +4,8 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-
+    android:layout_marginRight="20dp"
+    android:layout_marginLeft="20dp"
     >
 
 
@@ -13,9 +14,10 @@
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="wrap_content"
-        android:text="@+id/label"
-        android:textSize="30px"
-    android:clickable="false"
+        android:layout_gravity="center"
+        android:text="0"
+        android:textSize="30dp"
+        android:clickable="false"
         android:focusable="false"
         android:focusableInTouchMode="false">
     </TextView>
@@ -31,6 +33,15 @@
         android:focusableInTouchMode="false"
 
         />
-
+    <TextView
+        android:id="@+id/arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=">"
+        android:textSize="30dp"
+        android:clickable="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false">
+    </TextView>
 
 </LinearLayout>
