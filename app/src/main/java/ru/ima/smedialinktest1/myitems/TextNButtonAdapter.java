@@ -12,6 +12,7 @@ import java.util.List;
 
 import ru.ima.smedialinktest1.R;
 
+
 /**
  * An adapter to manipulate text and buttons in our custom data.
  * Created by Imaskar on 07 Oct 2014.
@@ -19,6 +20,13 @@ import ru.ima.smedialinktest1.R;
 public class TextNButtonAdapter extends ArrayAdapter<MyitemsContentProvider.MyListItem> {
     private final Context context;
     private final List<MyitemsContentProvider.MyListItem> values;
+
+    static class ViewHolder {
+
+        private TextView content;
+        private Button btn;
+        private TextView arrow;
+    }
 
     public TextNButtonAdapter(Context context, List<MyitemsContentProvider.MyListItem> values) {
         super(context, R.layout.text_n_btn, values);
@@ -30,11 +38,24 @@ public class TextNButtonAdapter extends ArrayAdapter<MyitemsContentProvider.MyLi
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View rowView = inflater.inflate(R.layout.text_n_btn, parent, false);
-        TextView textView = (TextView) rowView.findViewById(R.id.label);
-        Button btn = (Button) rowView.findViewById(R.id.btn);
-        textView.setText(values.get(position).content);
-        btn.setBackground(BitmapFactory.get(values.get(position).fillRatio));
-        return rowView;
+        //View rowView = convertView;
+        ViewHolder viewHolder = null;
+        // reuse views
+        if (convertView == null) {
+            viewHolder = new ViewHolder();
+            ;
+            convertView = inflater.inflate(R.layout.text_n_btn, parent, false);
+            viewHolder.content = (TextView) convertView.findViewById(R.id.label);
+            viewHolder.btn = (Button) convertView.findViewById(R.id.btn);
+            viewHolder.arrow = (TextView) convertView.findViewById(R.id.arrow);
+            convertView.setTag(viewHolder);
+
+        } else {
+            viewHolder = (ViewHolder) convertView.getTag();
+
+        }
+        viewHolder.content.setText(values.get(position).content);
+        viewHolder.btn.setBackground(BitmapFactory.get(values.get(position).fillRatio));
+        return convertView;
     }
 }
